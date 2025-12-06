@@ -1,0 +1,1203 @@
+/* ZAVIS LAB v6.1 Design System */
+
+:root {
+    --bg-dark: #050709;
+    --bg-card: #151b2e;
+    --bg-input: #1e2640;
+    --accent: #3b82f6;
+    --accent-glow: rgba(59, 130, 246, 0.5);
+    --text-main: #ffffff;
+    --text-sub: #94a3b8;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --macro-note: #facc15;
+}
+
+/* body 기본값은 그대로 두고 */
+body {
+    background: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* 🔹검색 결과가 나온 뒤 적용할 보라색 배경 */
+body.zavis-result-bg {
+  background:
+    radial-gradient(circle at 20% 0%, #f9a8ff 0%, #a855f7 40%, #4c1d95 70%, #020617 100%);
+}
+
+
+/* Header */
+.top-header {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+    background: transparent;
+}
+
+/* 🔹 최상단 텍스트(타이틀/서브타이틀)를 항상 흰색으로 */
+.top-header > h1,
+.top-header > p {
+    color: #ffffff;
+}
+
+.app-title {
+    margin: 0;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #ffffff;                     /* 완전 흰색 */
+    letter-spacing: -1px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35); /* 보라 배경에서 가독성 ↑ */
+}
+
+
+.app-sub {
+    color: var(--text-sub);
+    margin-top: 0.5rem;
+    font-size: 1rem;
+}
+
+.app-sub-engine {
+    opacity: 0.9;
+    font-size: 0.9rem;
+}
+
+/* 매크로 바 */
+.macro-row {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.macro-box {
+    min-width: 150px;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    text-align: left;
+}
+
+.macro-label {
+    font-size: 0.8rem;
+    color: var(--text-sub);
+    margin-bottom: 0.25rem;
+}
+
+.macro-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.macro-note {
+    margin-top: 0.25rem;
+    font-size: 0.8rem;
+    color: var(--macro-note);
+}
+
+/* Search */
+.search-row {
+    margin-top: 1.75rem;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* 🔹 메인 헤더 검색바 – ENTRY 카드와 완전 동일 스타일 */
+.ticker-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-radius: 24px;
+  background: #050709cc;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+  min-width: min(520px, 90vw);
+  max-width: 90vw;
+  margin: 1.75rem auto 0;
+}
+
+/* 입력창 – #entry-ticker와 동일 */
+#ticker-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #fff;
+  font-size: 1.05rem;
+  padding: 8px 4px;
+}
+
+#ticker-input::placeholder {
+  color: #ffffff66;
+}
+
+/* 버튼 – .entry-btn과 동일 */
+#search-btn,
+#analyze-btn {
+  border: none;
+  outline: none;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #4dabf7, #9775fa);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.4);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+}
+
+#search-btn:hover,
+#analyze-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.5);
+}
+
+#search-btn:active,
+#analyze-btn:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
+}
+
+
+#analyze-btn:hover,
+#search-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 18px 40px rgba(37, 99, 235, 0.7);
+    filter: brightness(1.05);
+}
+
+#analyze-btn:active,
+#search-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 10px 22px rgba(37, 99, 235, 0.5);
+    filter: brightness(0.96);
+}
+
+.z-button {
+    padding: 0 2rem;
+    border-radius: 12px;
+    border: none;
+    background: var(--accent);
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.z-button:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--accent-glow);
+}
+
+/* Card */
+.card {
+    max-width: 1000px;
+    margin: 0 auto 3rem;
+    background: var(--bg-card);
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Ticker Header */
+.ticker-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.ticker-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.ticker-symbol-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+/* 티커 오른쪽 가격/섹터 블록 */
+.ticker-price-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+}
+
+.ticker-symbol {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.ticker-price {
+    font-size: 1.2rem;
+    color: var(--text-sub);
+    margin-top: 0;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    background: var(--bg-input);
+    margin-right: 0.5rem;
+}
+
+.main-comment {
+    color: var(--text-sub);
+    font-size: 0.95rem;
+}
+
+/* 섹터/테마 태그 컨테이너 */
+.ticker-labels {
+    margin-top: 0.25rem;
+}
+
+/* Metrics */
+.z-metrics {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Z SCORE / Z RANK 오른쪽 컬럼 */
+.z-metrics-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.75rem;
+}
+
+.z-badge {
+    background: linear-gradient(145deg, #1e2640, #111827);
+    padding: 1.5rem;
+    border-radius: 16px;
+    min-width: 140px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.z-risk-label {
+    margin-top: 0.35rem;
+    font-size: 0.8rem;
+    color: var(--text-sub);
+}
+
+.z-badge-label {
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.z-badge-value {
+    font-size: 3.1rem;
+    font-weight: 800;
+    font-style: italic;
+    color: var(--accent);
+}
+
+/* Chart */
+.chart-container {
+    height: 400px;
+    background: #000;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+/* Grid */
+.section-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.section-box {
+    background: rgba(255,255,255,0.03);
+    padding: 1.5rem;
+    border-radius: 16px;
+}
+
+.section-box h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+    color: var(--accent);
+}
+
+.section-box p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.section-box.wide {
+    grid-column: span 2;
+}
+
+/* 지표 박스 */
+.indicator-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.indicator-box {
+    flex: 1;
+    background: rgba(255,255,255,0.03);
+    padding: 1.5rem;
+    border-radius: 16px;
+}
+
+.indicator-box h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+    color: var(--accent);
+}
+
+.indicator-box p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Targets */
+.target-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.target-box {
+    flex: 1;
+    background: rgba(255,255,255,0.03);
+    padding: 1.5rem;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.target-box h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--text-sub);
+    font-size: 0.9rem;
+}
+
+.target-box p {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.target-1 p,
+.target-2 p {
+    color: var(--success);
+}
+
+.stop-loss p {
+    color: var(--danger);
+}
+
+/* Loading & Toast */
+.loading-container {
+    text-align: center;
+    padding: 2rem;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255,255,255,0.1);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 1s infinite linear;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-text {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+}
+
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 100;
+    animation: slideUp 0.3s;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translate(-50%, 20px);
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+/* Footer */
+.footer-note {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-sub);
+}
+
+.copyright {
+    margin-top: 0.4rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-sub);
+}
+
+/* 전략 요약 박스 */
+.strategy-box {
+    margin-top: 2rem;
+    padding: 1.5rem 1.75rem;
+    border-radius: 18px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.45);
+}
+
+.strategy-box h3 {
+    margin: 0 0 0.75rem 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+}
+
+.strategy-box p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-sub);
+}
+
+.strategy-detail {
+    margin-top: 0.35rem;
+    font-size: 0.9rem;
+    opacity: 0.95;
+}
+
+/* 포지션 사이즈 계산기 */
+.position-box {
+    margin-top: 1.75rem;
+    padding: 1.5rem 1.75rem;
+    border-radius: 18px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.position-box h3 {
+    margin: 0 0 0.9rem 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.pos-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.9rem;
+    flex-wrap: wrap;
+}
+
+.pos-field {
+    flex: 1;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.pos-field label {
+    font-size: 0.8rem;
+    color: var(--text-sub);
+}
+
+.pos-field input {
+    padding: 0.55rem 0.7rem;
+    border-radius: 10px;
+    border: 1px solid rgba(148, 163, 184, 0.5);
+    background: rgba(15, 23, 42, 0.9);
+    color: var(--text-main);
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.pos-field input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25);
+}
+
+.pos-result-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 0.3rem;
+}
+
+.pos-btn {
+    padding-inline: 1.5rem;
+    white-space: nowrap;
+}
+
+.pos-result {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+}
+
+#pos-size {
+    font-weight: 700;
+    color: #22c55e;
+}
+
+#pos-risk-amount {
+    font-weight: 600;
+    color: #f97316;
+}
+
+.pos-hint {
+    margin-top: 0.55rem;
+    font-size: 0.8rem;
+    color: var(--text-sub);
+    opacity: 0.9;
+}
+
+/* ───────── Market Regime ───────── */
+
+.regime-section {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.regime-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.regime-header .section-title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.regime-caption {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-sub);
+}
+
+/* 상단/하단 공용 pill 줄 */
+.regime-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 0.35rem;
+}
+
+/* 기본 pill 스타일 */
+.regime-pill {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+  white-space: nowrap;
+}
+
+/* 상태별 색상 */
+.regime-pill-neutral {
+  border-color: #6b7280;
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+}
+
+.regime-pill-riskon {
+  border-color: #22c55e;
+  background: rgba(34, 197, 94, 0.14);
+  color: #bbf7d0;
+}
+
+.regime-pill-riskoff {
+  border-color: #f97316;
+  background: rgba(248, 113, 113, 0.14);
+  color: #fed7aa;
+}
+
+/* FX Regime */
+.regime-pill-fx-weak {
+  border-color: #60a5fa;
+  background: rgba(59, 130, 246, 0.16);
+  color: #bfdbfe;
+}
+
+.regime-pill-fx-strong {
+  border-color: #f97316;
+  background: rgba(248, 150, 88, 0.2);
+  color: #fed7aa;
+}
+
+/* Crypto Regime */
+.regime-pill-crypto-hot {
+  border-color: #eab308;
+  background: rgba(234, 179, 8, 0.18);
+  color: #facc15;
+}
+
+.regime-pill-crypto-cold {
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.18);
+  color: #bae6fd;
+}
+
+/* ── Z-Factor Chips ── */
+
+.factor-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 1rem 0;
+}
+
+.factor-pill {
+  padding: 0.25rem 0.7rem;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+  white-space: nowrap;
+}
+
+.factor-bull {
+  border-color: #22c55e;
+  background: rgba(34, 197, 94, 0.16);
+  color: #bbf7d0;
+}
+
+.factor-bear {
+  border-color: #f97316;
+  background: rgba(248, 113, 113, 0.18);
+  color: #fed7aa;
+}
+
+.factor-neutral {
+  opacity: 0.9;
+}
+
+/* 섹터/테마 태그 pill 스타일 */
+#ticker-labels .label-pill {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  margin-right: 6px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  background: rgba(30, 64, 175, 0.15);
+  border: 1px solid rgba(129, 140, 248, 0.6);
+  color: #e5e7eb;
+  white-space: nowrap;
+}
+
+/* 필터 버튼 */
+.factor-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: flex-end;
+}
+
+.factor-filter-btn {
+  padding: 0.25rem 0.8rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+  opacity: 0.85;
+}
+
+.factor-filter-btn:hover {
+  opacity: 1;
+  border-color: var(--accent);
+}
+
+.factor-filter-btn.active {
+  border-color: var(--accent);
+  background: rgba(59, 130, 246, 0.16);
+  color: #bfdbfe;
+  opacity: 1;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .ticker-header-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .z-metrics {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .z-badge {
+        flex: 1;
+    }
+    .section-grid {
+        grid-template-columns: 1fr;
+    }
+    .section-box.wide {
+        grid-column: span 1;
+    }
+    .indicator-row {
+        flex-direction: column;
+    }
+    .target-row {
+        flex-direction: column;
+    }
+    .search-row {
+        flex-direction: column;
+    }
+    #ticker-input {
+        width: 100%;
+    }
+    .macro-row {
+        flex-direction: column;
+    }
+    .z-metrics-column {
+        align-items: flex-start;
+    }
+    .factor-filter-row {
+        justify-content: flex-start;
+    }
+    .pos-row {
+        flex-direction: column;
+    }
+    .pos-result-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* =========================
+   🔒 ZAVIS ACCESS / INTRO / ENTRY
+   ========================= */
+
+#zavis-overlay-root {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: #3f3f3f;  /* 회장님이 원하던 그 회색 */
+}
+
+/* 기본 화면 레이어: 공통 트랜지션만 담당 (배경 X) */
+.z-screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 2s ease, transform 2s ease;
+  pointer-events: none;
+}
+
+.z-screen.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.z-screen.hide {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+/* 1) PIN 화면 전용: 회색 배경 + 연기/블롭 없음 */
+#lock-screen {
+  background: #3f3f3f;
+}
+
+#lock-screen .zavis-smoke-bg {
+  display: none; /* PIN 단계에서는 원형 이펙트 숨김 */
+}
+
+/* PIN 화면 내부 요소: "빈 회색 → PIN UI" 순차 등장 */
+#lock-screen .zavis-title,
+#lock-screen .zavis-sub,
+#lock-screen .pin-row,
+#lock-screen .pin-caption {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+#lock-screen .zavis-title {
+  animation: lockFadeUp 0.6s ease-out 0.2s forwards;
+}
+
+#lock-screen .zavis-sub {
+  animation: lockFadeUp 0.6s ease-out 0.7s forwards;
+}
+
+#lock-screen .pin-row,
+#lock-screen .pin-caption {
+  animation: lockFadeUp 0.6s ease-out 1.2s forwards;
+}
+
+@keyframes lockFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 2) INTRO / ENTRY 화면 전용: 보라 그라디언트 + 원형 이퀄라이저 느낌 */
+#intro-screen,
+#entry-screen {
+  background:
+    radial-gradient(circle at 20% 0%, #f9a8ff 0%, #a855f7 40%, #4c1d95 70%, #020617 100%);
+}
+
+.zavis-smoke-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* 🔵🟣 원형 이퀄라이저 느낌의 링 이펙트 */
+.zavis-smoke-orb {
+  position: absolute;
+  width: 80vmin;
+  height: 80vmin;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center,
+      transparent 55%,
+      rgba(56, 189, 248, 0.0) 56%,
+      rgba(56, 189, 248, 0.9) 62%,
+      rgba(244, 114, 182, 0.9) 72%,
+      transparent 78%);
+  box-shadow:
+    0 0 30px rgba(56, 189, 248, 0.6),
+    0 0 60px rgba(168, 85, 247, 0.6);
+  opacity: 0.95;
+  mix-blend-mode: screen;
+  animation: zavisRing 16s linear infinite;
+}
+
+@keyframes zavisRing {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1.0);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg) scale(1.05);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) scale(1.0);
+  }
+}
+
+/* 공통 컨텐츠 레이아웃 */
+.z-screen-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 40px 24px;
+}
+
+/* 큰 타이틀 (PIN / ENTRY 공용) */
+.zavis-title {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: clamp(3.6rem, 4.5vw, 4.6rem);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+/* 서브 타이틀 */
+.zavis-sub {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+/* PIN 화면 ------------------------------------------------------ */
+
+.pin-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 36px 0 16px;
+}
+
+.pin-input {
+  width: 64px;
+  height: 80px;
+  border-radius: 18px;
+  border: 1px solid #ffffff26;
+  background: #5a5a5a;
+  color: #fff;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  outline: none;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.15s ease;
+}
+
+.pin-input:focus {
+  border-color: #ffffffcc;
+  background: #6b6b6b;
+  transform: translateY(-2px);
+}
+
+.pin-caption {
+  font-size: 0.95rem;
+  margin-top: 8px;
+  opacity: 0.86;
+}
+
+.lock-error {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #ff6b6b;
+}
+
+/* INTRO 화면 – 가운데 정렬 ------------------------------------- */
+
+#intro-screen .z-screen-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0 24px;
+}
+
+/* HELLO SIR + CONNECT TO ZAVIS */
+.intro-title,
+.intro-sub {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+/* 폰트 크기 / 스타일 (요청 반영: 더 크게) */
+.intro-title {
+  font-size: clamp(3rem, 4vw, 3.8rem);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.intro-sub {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+/* HELLO SIR : 2초 페이드인 */
+.intro-visible-long {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 2s ease, transform 2s ease;
+}
+
+/* CONNECT TO ZAVIS : 1초 페이드인 (HELLO SIR 유지) */
+.intro-visible-short {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+/* 필요 시 사라질 때 */
+.intro-hidden {
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* ENTRY 화면 (티커 입력) ---------------------------------------- */
+
+.entry-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.entry-header {
+  margin-bottom: 8px;
+}
+
+.entry-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-radius: 24px;
+  background: #050709cc;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+  min-width: min(520px, 90vw);
+  max-width: 90vw;
+  transform-origin: center;
+  transition: transform 0.5s ease, opacity 0.45s ease, border-radius 0.5s ease;
+}
+
+.entry-card.running {
+  transform: scale(0.75);
+  opacity: 0.0;
+}
+
+#entry-ticker {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #fff;
+  font-size: 1.05rem;
+  padding: 8px 4px;
+}
+
+#entry-ticker::placeholder {
+  color: #ffffff66;
+}
+
+.entry-btn {
+  border: none;
+  outline: none;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #4dabf7, #9775fa);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.4);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+}
+
+.entry-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.5);
+}
+
+.entry-btn:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
+}
+
+/* Entry 메시지 – 1초 페이드인 */
+.entry-message {
+  margin-top: 6px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.entry-message.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Entry 로딩 – 원형 스피너 */
+.entry-progress {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.18);
+  border-top-color: #4dabf7;
+  margin-top: 10px;
+  margin-inline: auto;
+  animation: spin 0.9s linear infinite;
+}
+
+/* ENTRY → 메인 앱 전환 시, 뒤 배경 가려주는 회색 백드롭
+   - 색상: PIN 화면(#lock-screen) 배경과 동일 (#3f3f3f)
+   - 레이어: 메인 앱 위, 오버레이(.z-screen) 아래
+*/
+.entry-backdrop {
+  position: fixed;
+  inset: 0;
+  background: #3f3f3f;       /* PIN 화면과 동일한 회색 */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  /* z-index 지정 안 함: 같은 컨텍스트에서 .z-screen들이 DOM상 뒤에 와서 위에 깔리도록 */
+}
+
+.entry-backdrop.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+/* 결과 카드 2초 페이드인 */
+#result-card {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 2s ease, transform 2s ease;
+}
+
+#result-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
